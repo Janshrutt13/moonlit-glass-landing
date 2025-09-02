@@ -20,7 +20,7 @@ export default {
 		extend: {
 			fontFamily: {
 				'inter': ['Inter', 'sans-serif'],
-				'playfair': ['Playfair Display', 'serif'],
+				'poppins': ['Poppins', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
