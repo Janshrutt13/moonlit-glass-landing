@@ -2,41 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Mystical Portal Design System - Glassmorphism with Japanese-inspired aesthetics
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core mystical color palette */
+    --background: 210 55% 8%;  /* Deep mystical background */
+    --foreground: 41 25% 93%;  /* Warm off-white text (#F0E6D2) */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Glass morphism panels */
+    --card: 210 55% 15%;  /* Glass fill base */
+    --card-foreground: 41 25% 93%;
+    --card-glass: 210 55% 15% / 0.25;  /* Glass fill with opacity */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 210 55% 15%;
+    --popover-foreground: 41 25% 93%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Vibrant crimson accent from the moon */
+    --primary: 353 76% 59%;  /* #E64B5F vibrant crimson */
+    --primary-foreground: 41 25% 93%;
+    --primary-glow: 353 76% 59% / 0.4;  /* Primary with glow opacity */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Muted mountain blue for secondary elements */
+    --secondary: 220 15% 60%;  /* #8892B0 muted blue */
+    --secondary-foreground: 41 25% 93%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 15% 35%;
+    --muted-foreground: 220 15% 60%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 353 76% 59%;
+    --accent-foreground: 41 25% 93%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Glass borders and inputs */
+    --border: 353 76% 59% / 0.2;  /* Subtle crimson border */
+    --input: 210 55% 15% / 0.3;   /* Glass input background */
+    --ring: 353 76% 59%;          /* Crimson focus ring */
 
-    --radius: 0.5rem;
+    --radius: 1rem;
+
+    /* Custom design tokens for glassmorphism */
+    --glass-blur: blur(16px);
+    --glass-border: 1px solid hsl(var(--primary-glow));
+    --glass-shadow: 0 8px 32px hsl(210 55% 8% / 0.3);
+    --glass-shadow-hover: 0 12px 40px hsl(353 76% 59% / 0.15);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-glass: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +117,43 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter;
+  }
+}
+
+@layer components {
+  /* Glassmorphism base styles */
+  .glass-panel {
+    background: hsl(var(--card-glass));
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    transition: var(--transition-glass);
+  }
+  
+  .glass-panel:hover {
+    box-shadow: var(--glass-shadow-hover);
+    border-color: hsl(var(--primary) / 0.6);
+  }
+  
+  .glass-input {
+    background: hsl(var(--input));
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid hsl(var(--border));
+    transition: var(--transition-smooth);
+  }
+  
+  .glass-input:focus {
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 0 2px hsl(var(--primary-glow));
+  }
+  
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
