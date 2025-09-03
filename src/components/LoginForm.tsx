@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Link } from "react-router-dom";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -103,9 +104,9 @@ const LoginForm = () => {
         <div className="text-center pt-4">
           <p className="text-white/70 font-inter text-sm">
             Don't have an account?{" "}
-            <button className="text-primary hover:text-primary/80 font-medium transition-colors">
+            <Link to="/signup" className="text-primary hover:text-primary/80 font-medium transition-colors">
               Sign up
-            </button>
+            </Link>
           </p>
         </div>
       </CardContent>
